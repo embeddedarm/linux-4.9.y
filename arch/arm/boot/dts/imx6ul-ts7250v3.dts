@@ -213,12 +213,13 @@
 	status = "okay";
 
 	wilc_spi@0 {
-		compatible = "microchip,wilc3000";
+		compatible = "microchip,wilc1000", "microchip,wilc3000";
 		reg = <0>;
 		spi-max-frequency = <24000000>;
-		wilc3000,reset-gpios = <&gpio5 5 0>;
-		wilc3000,chip-en-gpios = <&gpio5 6 0>;
-		wilc3000,irq-gpios = <&gpio3 1 0>;
+		reset-gpios = <&gpio5 5 GPIO_ACTIVE_HIGH>;
+		chip_en-gpios = <&gpio5 6 GPIO_ACTIVE_HIGH>;
+		interrupt-parent = <&gpio3>;
+		interrupts = <1 GPIO_ACTIVE_HIGH>;
 		status = "okay";
 	};
 };
